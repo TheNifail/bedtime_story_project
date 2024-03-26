@@ -31,7 +31,7 @@ def text_to_speech(text):
 
 def main():
     
-    st.title('BedTime Story')
+    st.title('Bed Time Story')
 
     user_prompt = st.text_area('What is the title of your story')
     if st.button('Generate Story'):
