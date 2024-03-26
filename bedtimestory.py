@@ -12,8 +12,6 @@ client = OpenAI(
     api_key=st.secrets["OPENAI_API_KEY"]
 )
 
-# Initialize the OpenAI client
-client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
 
 # Function to convert text to speech
 def text_to_speech(text):
