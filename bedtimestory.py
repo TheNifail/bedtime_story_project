@@ -6,26 +6,15 @@ import streamlit as st
 from StoryMethods import StoryMethods as sm
 from gtts import gTTS
 from io import BytesIO
-
+from pydub import AudioSegment
+import base64
 
 client = OpenAI(
     api_key=st.secrets["OPENAI_API_KEY"]
 )
 
 
-# Function to convert text to speech
-def text_to_speech(text):
-    # Convert the text to speech using gTTS
-    tts = gTTS(text, lang='en')
 
-    # Create an in-memory file-like object to store the audio
-    sound_file = BytesIO()
-
-    # Write the speech to the in-memory file
-    tts.write_to_fp(sound_file)
-
-    # Return the audio file
-    return sound_file
 
 def main():
     
@@ -48,12 +37,15 @@ def main():
         st.write('Generated Story:')
         st.write(story)
 
-        # Add a button to convert the generated story text to speech
-        if st.button('Convert Story to Speech'):
-            # Call the text_to_speech function with the generated story text
-            audio_file = text_to_speech(story)
-            # Play the generated speech in the Streamlit app
-            st.audio(audio_file, format='audio/wav')
+      # Convert the generated story to speech
+        tts = gTTS(text=story, lang='en')
+        audio_bytes = BytesIO()
+        tts.write_to_fp(audio_bytes)
+        audio_bytes.seek(0)
+
+        # Create a play button to play the generated speech
+        st.audio(audio_bytes, format='audio/wav')
+
 
 
 if __name__ == "__main__":
