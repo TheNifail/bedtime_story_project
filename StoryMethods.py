@@ -6,7 +6,7 @@ class StoryMethods:
             messages=[{
                 "role": "system", 
                 "content": """You are the best bedtime story teller.
-                            You'll take user's prompt story title and generate a 100 words shortstory for children age 8-10"""
+                            You'll take user's prompt story title and generate a 150 words shortstory for children age 8-10"""
                 },
                 {
                 "role": "user", 
