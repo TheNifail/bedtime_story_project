@@ -14,7 +14,7 @@ def main():
     st.title('BedTime Story')
 
     user_prompt = st.text_area('What is the title of your story')
-    if st.butten('Generate Story'):
+    if st.button('Generate Story'):
 
         story =sm.story_ai(user_prompt,client)
         design =sm.design_ai(story,client)
